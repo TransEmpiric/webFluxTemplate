@@ -1,11 +1,11 @@
-# Spring 5 Webflux Demo
+# Spring 5 Webflux Template
 
-This code can be used to build the next generation of applications using reactive programing, webs-sockets, rest, mongoDB, JWT (JSON Web Tokens) and Netty.
+This code can be used to build the next generation of applications using micro-services, reactive programing, webs-sockets, rest, mongoDB, JWT (JSON Web Tokens) and Netty.
 
 ## What is this again?
 
-This is a complete template example for Spring 5 Webfux.
-The application shows how to use Spring 5 Webfux with Spring Security, web-sockets, @RestContorler, @Controller, Reactive MongoDB, and JWT.
+This is a complete template example for Spring 5 Webflux.
+The application shows how to use Spring 5 Webflux with Spring Security, web-sockets, @RestContorler, @Controller, Reactive MongoDB, and JWT.
 
 Spring 5 is still new.  There are very few examples of how to use Spring Security with the Webflux stack.
 Reactive Oauth2 support is not ready yet.  This application roles it's own Oauth2 like api with JWT tokens.
@@ -14,7 +14,7 @@ This app has integrated web-sockets and rest services into the Reactive Spring S
 #### MongoDB
 MongoDB is used for this example, so you'll need this up and running on your local machine, if you are on OSX, you can easily install
 MongoDB using Homebrew.
-MongoDB config is defined in applicatoin.yml.
+The MongoDB config is defined in application.yml.
 
 ## Running locally
 ```
@@ -25,7 +25,7 @@ MongoDB config is defined in applicatoin.yml.
 
 If everything goes well you can go to the Secure Web-socket Example page [http://localhost:8443/test/ws](http://localhost:8443/test/ws)
 
-##### Get a JWT for authentication
+#### Get a JWT for authentication
 Endpoint:
 http://localhost:8443/auth/token
 
@@ -48,7 +48,7 @@ Response:
 }
 ```
 
-##### Use JWT on a secure rest endpoint
+#### Use JWT on a secure rest endpoint
 Endpoint:
 http://localhost:8443/api/rest/user/list
 
@@ -85,7 +85,7 @@ Response:
 ]
 ```
 
-##### Use JWT on a secure web-socket endpoint
+#### Use JWT on a secure web-socket endpoint
 Go to [http://localhost:8443/test/ws](http://localhost:8443/test/ws) in a browser.
 JWT is hard coded in the JS within templates/websocket.ftl
 You need to replace with a new token if the hard coded token has expired
@@ -104,13 +104,13 @@ You need to replace with a new token if the hard coded token has expired
     </script>
 ```
 
-##### Properties
+#### Properties
 Properties are in application.yml
 You can set to HTTPS (test cert works) if you want, but make sure to update the call to web-socket endpoints with "wss://"
 
-##### TODO
+#### WILLDO
 Verify password at auth end point with CustomPasswordEncoder
 Make a UI for example token retrieval and a UI to use it
-Finish Refresh Token Code
-Add example micro-service of MySQL, Hibernate, Spring MVC, Tomcat
-Add React and/or Angular Frontend example to repo
+Finish Refresh Token code
+Add example micro-service of MySQL, Hibernate, and Spring MVC on Tomcat
+Add React and/or Angular Front-end example to repo

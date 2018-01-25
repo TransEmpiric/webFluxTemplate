@@ -10,11 +10,17 @@
 .settings
 .springBeans
 
+### Spring Boot ###
+/out/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+
+### Mac ###
+.DS_Store
 
 ### NetBeans ###
 nbproject/private/
