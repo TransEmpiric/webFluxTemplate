@@ -105,12 +105,14 @@ You need to replace with a new token if the hard coded token has expired
 ```
 
 #### Properties
+```
 Properties are in application.yml
 You can set to HTTPS (test cert works) if you want, but make sure to update the call to web-socket endpoints with "wss://"
-
+```
 #### WILLDO
+```
 Verify password at auth end point with CustomPasswordEncoder
 Make a UI for example token retrieval and a UI to use it
 Finish Refresh Token code
-Add example micro-service of MySQL, Hibernate, and Spring MVC on Tomcat
 Add React and/or Angular Front-end example to repo
+```
