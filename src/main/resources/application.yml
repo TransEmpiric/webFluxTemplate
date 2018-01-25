@@ -1,0 +1,44 @@
+# JACKSON
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: template
+
+jwt:
+  header: Authorization
+  param: token
+  secret: m6sXDUKZSY154e9N
+  expiration: 604800000
+  prefix: Bearer
+  route:
+    authentication:
+      path: auth
+      token: token
+      refresh: refresh
+
+# SSL configuration
+server:
+  port: 8443
+  ssl:
+    enabled: false
+    key-store: src/main/resources/ssl/templatestore.jks
+    key-store-password: qwerty
+    key-password: qwerty
+
+# Actuator
+management:
+  port: 8081
+  ssl:
+    enabled: false
+
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      data: DEBUG
