@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Transempiric"/>
     <meta name="author" content="Transempiric"/>
-    <title>Reactor Community Dashboard</title>
+    <title>Transempiric Webflux Template</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
 </head>
 <body>

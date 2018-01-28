@@ -26,20 +26,20 @@ The MongoDB config is defined in application.yml.
 If everything goes well you can go to the Secure Web-socket Example page [http://localhost:8443/test/ws](http://localhost:8443/test/ws)
 
 #### Get a JWT for authentication
-Endpoint:
+Endpoint:<br/>
 http://localhost:8443/auth/token
 
-Method:
-POST
+Method:<br/>
+POST:<br/>
 
 Request headers:
+```
 content-type: application/json
-
+```
 Body:
 ```
 {"username" : "jdev", "password":"jdev"}
 ```
-
 Response:
 ```
 {
@@ -49,16 +49,17 @@ Response:
 ```
 
 #### Use JWT on a secure rest endpoint
-Endpoint:
-http://localhost:8443/api/rest/user/list
+Endpoint:<br/>
+http://localhost:8443/api/rest/user/list:<br/>
 
-Method:
-GET
+Method:<br/>
+GET:<br/>
 
 Request headers:
+```
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZGV2IiwiYXVkIjoidW5rbm93biIsImV4cCI6MjEyMTcwNzgyMiwiaWF0IjoxNTE2OTA3ODIyfQ.TVwbWsz-BDfMQmgUDnB_GloXklEdS_ABMiF9iGzHrBNA1f4yOQb3day7vcFLNxcLefkQjZDlVlpU91AtkzQqLg
-
+```
 Response:
 ```
 [
