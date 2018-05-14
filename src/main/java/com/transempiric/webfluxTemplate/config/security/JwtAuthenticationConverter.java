@@ -17,15 +17,15 @@ import reactor.core.scheduler.Schedulers;
 import java.util.function.Function;
 
 @Component
-public class CustomAuthenticationConverter implements Function<ServerWebExchange, Mono<Authentication>> {
+public class JwtAuthenticationConverter implements Function<ServerWebExchange, Mono<Authentication>> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ReactiveUserDetailsService userDetailsService;
     private final JwtTokenUtil jwtTokenUtil;
 
-    public CustomAuthenticationConverter(ReactiveUserDetailsService userDetailsService, JwtTokenUtil jwtTokenUtil) {
+    public JwtAuthenticationConverter(ReactiveUserDetailsService userDetailsService, JwtTokenUtil jwtTokenUtil) {
         Assert.notNull(userDetailsService, "userDetailsService cannot be null");
-        Assert.notNull(userDetailsService, "userDetailsService cannot be null");
+        Assert.notNull(jwtTokenUtil, "jwtTokenUtil cannot be null");
 
         this.userDetailsService = userDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;
@@ -74,14 +74,8 @@ public class CustomAuthenticationConverter implements Function<ServerWebExchange
 
             logger.info("checking authentication for user " + username);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                if (jwtTokenUtil.validateToken(authToken)) {
-                    logger.info("authenticated user " + username + ", setting security context");
-                    final String token = authToken;
-                    return this.userDetailsService.findByUsername(username)
-                            .publishOn(Schedulers.parallel())
-                            .switchIfEmpty(Mono.error(new BadCredentialsException("Invalid Credentials")))
-                            .map(u -> new JwtAuthenticationToken(token, u.getUsername(), u.getAuthorities()));
-                }
+
+                return Mono.just(new JwtPreAuthenticationToken(authToken, bearerRequestHeader, username));
             }
 
             return Mono.just(authentication);

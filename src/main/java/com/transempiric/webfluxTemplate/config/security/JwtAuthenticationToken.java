@@ -12,6 +12,11 @@ public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken 
         super(username, null, authorities);
         this.token = token;
     }
+
+    public JwtAuthenticationToken(String username, Collection<? extends GrantedAuthority> authorities) {
+        super(username, null, authorities);
+    }
+
     public String getToken() {
         return token;
     }
