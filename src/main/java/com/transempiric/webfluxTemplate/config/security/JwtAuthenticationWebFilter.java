@@ -29,15 +29,19 @@ public class JwtAuthenticationWebFilter extends AuthenticationWebFilter {
     }
 
     private static class JWTHeadersExchangeMatcher implements ServerWebExchangeMatcher {
-
         @Override
         public Mono<MatchResult> matches(final ServerWebExchange exchange) {
-            return Mono.just(exchange)
-                    .map(ServerWebExchange::getRequest)
-                    .map(ServerHttpRequest::getHeaders)
+            Mono<ServerHttpRequest> request = Mono.just(exchange).map(ServerWebExchange::getRequest);
+
+            /* Check for header "authorization" or parameter "token" */
+            return request.map(ServerHttpRequest::getHeaders)
                     .filter(h -> h.containsKey("authorization"))
                     .flatMap($ -> MatchResult.match())
-                    .switchIfEmpty(MatchResult.notMatch());
+                    .switchIfEmpty(request.map(ServerHttpRequest::getQueryParams)
+                            .filter(h -> h.containsKey("token"))
+                            .flatMap($ -> MatchResult.match())
+                            .switchIfEmpty(MatchResult.notMatch())
+                    );
         }
     }
 }

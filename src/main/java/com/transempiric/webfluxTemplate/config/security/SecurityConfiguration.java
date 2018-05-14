@@ -25,7 +25,9 @@ public class SecurityConfiguration {
     private static final String[] AUTH_WHITELIST = {
             "/resources/**",
             "/webjars/**",
-            "/auth/**"
+            "/auth/**",
+            "/test/ws",
+            "/favicon.ico"
     };
 
     @Bean
